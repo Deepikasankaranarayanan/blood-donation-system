@@ -19,7 +19,12 @@ pip install -r requirements.txt
 python app.py
 
 ## 📷 Screenshots
-(Add screenshots here)
+![login](login.png)
+![dashboard](dashboard.png)
+![donated students](donated_students.png)
+![add student](add_student.png)
+![search donor](search_donor.png)
+![student database](student_database.png)
 
 ## 👩‍💻 Author
 Deepika
