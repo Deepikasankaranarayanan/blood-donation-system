@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+body{
+background:#f4f6f9;
+}
+
+.page-container{
+max-width:900px;
+margin:auto;
+margin-top:40px;
+}
+
+.page-card{
+background:white;
+padding:35px;
+border-radius:12px;
+box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.page-title{
+font-size:28px;
+font-weight:600;
+margin-bottom:25px;
+color:#7c1f1f;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#b33939;
+color:white;
+padding:12px;
+text-align:center;
+}
+
+td{
+padding:10px;
+text-align:center;
+border-bottom:1px solid #eee;
+}
+
+tr:hover{
+background:#f9f9f9;
+}
+
+.next-date{
+color:green;
+font-weight:600;
+}
+
+.last-date{
+color:#555;
+}
+
+</style>
+
+
+<div class="page-container">
+
+<div class="page-card">
+
+<div class="page-title">
+Students Who Donated Blood
+</div>
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Department</th>
+<th>Blood Group</th>
+<th>Last Donated Date</th>
+<th>Next Eligible Date</th>
+</tr>
+
+{% for s in students %}
+
+<tr>
+
+<td>{{ s[1] }}</td>
+<td>{{ s[3] }}</td>
+<td>{{ s[6] }}</td>
+
+<td class="last-date">
+{{ s[9] }}
+</td>
+
+<td class="next-date">
+{{ s[10] }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

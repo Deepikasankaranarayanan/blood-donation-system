@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.dashboard-container{
+width:1000px;
+margin:auto;
+margin-top:40px;
+}
+
+.welcome-card{
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+margin-bottom:35px;
+}
+
+.welcome-title{
+font-size:28px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.welcome-text{
+font-size:16px;
+color:#555;
+line-height:1.6;
+}
+
+.stats{
+display:flex;
+gap:25px;
+justify-content:space-between;
+}
+
+.stat-card{
+flex:1;
+padding:30px;
+border-radius:12px;
+color:white;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+transition:0.3s;
+}
+
+.stat-card:hover{
+transform:translateY(-5px);
+}
+
+.stat-number{
+font-size:38px;
+font-weight:bold;
+margin:10px 0;
+}
+
+.stat-text{
+font-size:15px;
+}
+
+.total{
+background:linear-gradient(135deg,#ff6a6a,#ff3d3d);
+}
+
+.donated{
+background:linear-gradient(135deg,#4facfe,#00f2fe);
+}
+
+.available{
+background:linear-gradient(135deg,#43e97b,#38f9d7);
+}
+
+</style>
+
+<div class="dashboard-container">
+
+<div class="welcome-card">
+
+<div class="welcome-title">
+Welcome
+</div>
+
+<div class="welcome-text">
+
+Welcome to the VCET Blood Donation Management System.
+
+This system helps the college blood donation club manage student donors, track donation records, and quickly find available blood donors during emergencies.
+
+Use the options in the navigation menu to add new students, search for donors by blood group, view the student database, and monitor donation activity.
+
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat-card total">
+
+<div>Total Students</div>
+
+<div class="stat-number">
+{{ total_students }}
+</div>
+
+<div class="stat-text">
+Students registered in the system
+</div>
+
+</div>
+
+<div class="stat-card donated">
+
+<div>Students Who Donated</div>
+
+<div class="stat-number">
+{{ donated_students }}
+</div>
+
+<div class="stat-text">
+Total blood donors
+</div>
+
+</div>
+
+<div class="stat-card available">
+
+<div>Available Donors</div>
+
+<div class="stat-number">
+{{ available_donors }}
+</div>
+
+<div class="stat-text">
+Students eligible to donate
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

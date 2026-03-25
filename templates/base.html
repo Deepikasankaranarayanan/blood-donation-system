@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>VCET Blood Donation Management System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#f4f6f9;
+}
+
+/* HEADER */
+
+.header{
+background:#e60000;
+color:white;
+text-align:center;
+padding:18px;
+font-size:32px;
+font-weight:600;
+position:relative;
+}
+
+/* MENU BUTTON */
+
+.menu-btn{
+font-size:28px;
+cursor:pointer;
+position:absolute;
+left:20px;
+top:18px;
+}
+
+/* LAYOUT */
+
+.layout{
+display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:220px;
+background:#1e272e;
+min-height:100vh;
+transition:0.3s;
+padding-top:20px;
+}
+
+.sidebar.hide{
+margin-left:-220px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:14px 20px;
+text-decoration:none;
+font-size:16px;
+}
+
+.sidebar a:hover{
+background:#485460;
+}
+
+/* CONTENT */
+
+.content{
+flex:1;
+padding:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<span class="menu-btn" onclick="toggleMenu()">☰</span>
+
+VCET Blood Donation Management System
+
+</div>
+
+<div class="layout">
+
+<div class="sidebar">
+
+<a href="/">Dashboard</a>
+
+<a href="/add_student_page">Add Student</a>
+
+<a href="/students_database">Student Database</a>
+
+<a href="/search">Search Blood</a>
+
+<a href="/donated">Donated Students</a>
+
+<a href="/logout">Logout</a>
+
+</div>
+
+<div class="content">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+</div>
+
+<script>
+
+function toggleMenu(){
+
+var sidebar=document.querySelector(".sidebar")
+
+sidebar.classList.toggle("hide")
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.form-container{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:40px;
+}
+
+.form-card{
+background:white;
+padding:35px;
+border-radius:12px;
+width:750px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.form-title{
+font-size:26px;
+font-weight:bold;
+margin-bottom:25px;
+text-align:center;
+color:#6b2c2c;
+}
+
+.form-row{
+display:flex;
+gap:15px;
+margin-bottom:15px;
+}
+
+.form-input{
+flex:1;
+padding:10px;
+border:2px solid #ddd;
+border-radius:6px;
+font-size:15px;
+}
+
+.form-select{
+flex:1;
+padding:10px;
+border:2px solid #ddd;
+border-radius:6px;
+font-size:15px;
+}
+
+.submit-btn{
+display:block;
+margin:auto;
+margin-top:20px;
+padding:12px 35px;
+background:#a63a3a;
+border:none;
+color:white;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.submit-btn:hover{
+background:#8c2f2f;
+}
+
+</style>
+
+<div class="form-container">
+
+<div class="form-card">
+
+<div class="form-title">
+Add Student Blood Details
+</div>
+
+<form action="/add_student" method="POST">
+
+<div class="form-row">
+<input type="text" name="name" placeholder="Student Name" class="form-input" required>
+<input type="text" name="reg_no" placeholder="Register Number" class="form-input" required>
+</div>
+
+<div class="form-row">
+<select name="department" class="form-select" required>
+<option value="">Select Department</option>
+<option>CSE</option>
+<option>ECE</option>
+<option>EEE</option>
+<option>IT</option>
+<option>AI&DS</option>
+<option>MECH</option>
+<option>CIVIL</option>
+<option>EE(VLSI)</option>
+<option>CS(CYBERSECURITY)</option>
+<option>MBA</option>
+</select>
+
+<input type="text" name="dept_no" placeholder="Department No" class="form-input" required>
+</div>
+
+<div class="form-row">
+<select name="year" class="form-select" required>
+<option value="">Select year</option>
+<option>I year</option>
+<option>II year</option>
+<option>III year</option>
+<option>IV year</option>
+</select>
+
+<select name="blood_group" class="form-select" required>
+<option value="">Blood Group</option>
+<option>O+</option>
+<option>O-</option>
+<option>A+</option>
+<option>A-</option>
+<option>B+</option>
+<option>B-</option>
+<option>AB+</option>
+<option>AB-</option>
+</select>
+</div>
+
+<div class="form-row">
+<input type="text" name="phone" placeholder="Phone Number" class="form-input" required>
+
+<select name="donated" id="donated" class="form-select" onchange="toggleDate()">
+<option value="No">Already Donated? No</option>
+<option value="Yes">Already Donated? Yes</option>
+</select>
+</div>
+
+<!-- LAST DONATED DATE -->
+
+<div class="form-row" id="date_field" style="display:none;">
+<input type="date" name="last_donated" id="last_donated" class="form-input" onchange="calculateNextDate()">
+<input type="date" name="next_date" id="next_date" class="form-input" readonly>
+</div>
+
+<button type="submit" class="submit-btn">
+Add Student
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script>
+
+function toggleDate(){
+
+var donated = document.getElementById("donated").value;
+var field = document.getElementById("date_field");
+
+if(donated=="Yes"){
+field.style.display="flex";
+}
+else{
+field.style.display="none";
+}
+
+}
+
+
+function calculateNextDate(){
+
+var lastDate = document.getElementById("last_donated").value;
+
+if(lastDate){
+
+var date = new Date(lastDate);
+date.setDate(date.getDate()+90);
+
+var nextDate = date.toISOString().split('T')[0];
+
+document.getElementById("next_date").value = nextDate;
+
+}
+
+}
+
+</script>
+
+{% endblock %}

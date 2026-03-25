@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Login</title>
+
+<style>
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:url("/static/images/login_bg.jpg");
+background-size:cover;
+background-position:center;
+font-family:Arial;
+}
+
+.login-card{
+width:320px;
+background:white;
+padding:35px;
+border-radius:10px;
+box-shadow:0 8px 25px rgba(0,0,0,0.3);
+text-align:center;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#e60000;
+border:none;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#b30000;
+}
+
+.error{
+color:red;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-card">
+
+<h2>Admin Login</h2>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+<form method="POST" action="/login">
+
+<input type="text" name="username" placeholder="Username" required>
+
+<input type="password" name="password" placeholder="Password" required>
+
+<button type="submit">Login</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>
